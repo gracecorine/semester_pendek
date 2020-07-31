@@ -1,0 +1,31 @@
+<%- include('../partials/header', {title : 'Add Student'}) %>
+
+    <body>
+        <h1>Add Student</h1>
+        <a href="/baaks/students">Students</a> || <a href="/baaks/teachers">Teachers</a> || <a href="/baaks/courses">Courses</a>
+        <hr>
+        <form action="/baaks/add/students" method="POST">
+            <label for="first_name">First Name : </label><br>
+            <input type="text" name="first_name"><br><br>
+            <label for="last_name">Last Name : </label><br>
+            <input type="text" name="last_name"><br><br>
+            <label for="npm">NPM : </label><br>
+            <input type="number" name="npm"><br><br>
+            <label for="email">Email : </label><br>
+            <input type="email" name="email"><br><br>
+            <label for="major">Major : </label><br>
+            <select name="major" id="major">
+            <option value="" selected>----- Choosee Fakultas ------  </option>
+            <option value="FTI">Fakultas Teknologi dan Industri</option>
+            <option value="FIPS">Fakultas Ilmu Pengetahuan Sosial</option>
+            <option value="FIPA">Fakultas Ilmu Pengetahuan Alam</option>
+            <option value="FSastra">Fakultas Sastra</option>
+            <option value="FKD">Fakultas Kedokteran</option>
+        </select><br><br>
+            <label for="class">Class : </label><br>
+            <input type="text" name="class"><br><br>
+            <button type="submit">Submit</button>
+        </form>
+        <hr>
+    </body>
+    <%- include('../partials/footer') %>

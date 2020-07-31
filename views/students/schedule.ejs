@@ -1,0 +1,43 @@
+<%- include('../partials/header', {title : 'Schedules Student'}) %>
+
+    <body>
+        <h1>Schedules Student</h1>
+        <a href="/students">Home</a> || <a href="/students/schedule">Schedule</a> || <a href="/students/add/courses">Semester Pendek</a>
+        <hr>
+        <% if(data[0].status == true ){ %>
+            <table border="1px">
+                <tr>
+                    <th>Id</th>
+                    <th>Courses Name</th>
+                    <th>Amount SKS</th>
+                    <th>Classroom</th>
+                    <th>Courses Start Schedule</th>
+                </tr>
+
+                <% data.forEach(el => { %>
+                    <tr>
+                        <td>
+                            <%= el.id %>
+                        </td>
+                        <td>
+                            <%= el.Course.name %>
+                        </td>
+                        <td>
+                            <%= el.Course.sks_amount %>
+                        </td>
+                        <td>
+                            <%= el.Course.classroom %>
+                        </td>
+                        <td>
+                            <%= el.Course.course_schedule.toLocaleDateString()%>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </table>
+            <% }else{ %>
+                <h4> Tidak Ada Jadwal Semester Pendek</h4>
+                <% } %>
+
+                    <hr>
+    </body>
+    <%- include('../partials/footer') %>

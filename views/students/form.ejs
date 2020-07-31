@@ -1,0 +1,45 @@
+<%- include('../partials/header', {title : 'Sempen Student'}) %>
+
+    <body>
+        <h1>Semester Pendek</h1>
+        <a href="/students">Home</a> || <a href="/students/schedule">Schedule</a> || <a href="/students/add/courses">Semester Pendek</a>
+        <hr>
+        <form action="/students/add/courses" method="POST">
+            <label>Silahkan Centang Mata Kuliah Yang Akan Di SP : </label><br>
+            <label>Minimum pilih 2 yaa</label>
+            <table border="1px">
+                <tr>
+                    <th>Id</th>
+                    <th>#</th>
+                    <th>Courses Name</th>
+                    <th>Amount SKS</th>
+                    <th>Teacher</th>
+                    <th>Price</th>
+                </tr>
+
+                <% data.forEach(el => { %>
+                    <tr>
+                        <td>
+                            <%= el.id %>
+                        </td>
+                        <td><input type="checkbox" id="<%= el.id %>" name="courses" value="<%= el.id %>"></td>
+                        <td><label for="<%= el.id %>"> <%= el.name %></label></td>
+                        <td>
+                            <%= el.sks_amount %>
+                        </td>
+                        <td>
+                            <%= el.Teacher.getfullName() %>
+                        </td>
+                        <td>
+                            <%= currency(nominalSks(el.sks_amount)) %>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </table>
+            <br>
+            <button type="submit">Register</button>
+        </form>
+
+        <hr>
+    </body>
+    <%- include('../partials/footer') %>

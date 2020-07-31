@@ -1,0 +1,46 @@
+<%- include('../partials/header', {title : 'Home Student'}) %>
+
+    <body>
+        <h1>Welcome Student</h1>
+        <a href="/students">Home</a> || <a href="/students/schedule">Schedule</a> || <a href="/students/add/courses">Semester Pendek</a>
+        <hr>
+        <h4>List Mata Kuliah Yang Akan Anda SP : </h4>
+        <% if(data){ %>
+            <table border="1px">
+                <tr>
+                    <th>Id</th>
+                    <th>Courses Name</th>
+                    <th>Amount SKS</th>
+                    <th>Amount</th>
+                </tr>
+                <% data.forEach(el => { %>
+                    <tr>
+                        <td>
+                            <%= el.id %>
+                        </td>
+                        <td>
+                            <%= el.Course.name %>
+                        </td>
+                        <td>
+                            <%= el.Course.sks_amount %>
+                        </td>
+                        <td>
+                            </p>
+                            <%= currency(nominalSks(el.Course.sks_amount)) %>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </table>
+
+            <form action="/students" method="post">
+                <label for="total">Total</label>
+                <input type="radio" name="total" value="<%= total %>">
+                <label for="total"><%= currency(total) %></label>
+                <button type="submit">submit payment</button>
+            </form>
+            <% }else{ %>
+                <h4> Anda Belum Mengambil Mata Kuliah Semester Pendek</h4>
+                <% } %>
+                    <hr>
+    </body>
+    <%- include('../partials/footer') %>

@@ -1,0 +1,31 @@
+<%- include('../partials/header', {title : 'Edit Student'}) %>
+
+    <body>
+        <h1>Edit Student</h1>
+        <a href="/baaks/students">Students</a> || <a href="/baaks/teachers">Teachers</a> || <a href="/baaks/courses">Courses</a>
+        <hr>
+        <form action="/baaks/<%= data.id %>/edit/students" method="POST">
+            <label for="first_name">First Name : </label><br>
+            <input type="text" name="first_name" value="<%= data.first_name %>"><br><br>
+            <label for="last_name">Last Name : </label><br>
+            <input type="text" name="last_name" value="<%= data.last_name %>"><br><br>
+            <label for="npm">NPM : </label><br>
+            <input type="number" name="npm" value="<%= data.npm %>"><br><br>
+            <label for="email">Email : </label><br>
+            <input type="email" name="email" value="<%= data.email %>"><br><br>
+            <label for="major">Major : </label><br>
+            <select name="major" id="major">
+            <option value="">----- Choosee Fakultas ------  </option>
+            <option value="FTI" <%= data.major === "FTI" ? 'selected' : '' %>>Fakultas Teknologi dan Industri</option>
+            <option value="FIPS" <%= data.major === "FIPS" ? 'selected' : '' %>>Fakultas Ilmu Pengetahuan Sosial</option>
+            <option value="FIPA" <%= data.major === "FIPA" ? 'selected' : '' %>>Fakultas Ilmu Pengetahuan Alam</option>
+            <option value="FSastra" <%= data.major === "FSastra" ? 'selected' : '' %>>Fakultas Sastra</option>
+            <option value="FKD" <%= data.major === "FKD" ? 'selected' : '' %>>Fakultas Kedokteran</option>
+        </select><br><br>
+            <label for="class">Class : </label><br>
+            <input type="text" name="class" value="<%= data.class %>"><br><br>
+            <button type="submit">Edit Save</button>
+        </form>
+        <hr>
+    </body>
+    <%- include('../partials/footer') %>

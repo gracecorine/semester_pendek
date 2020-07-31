@@ -1,0 +1,48 @@
+<%- include('../partials/header', {title : 'Students'}) %>
+
+    <body>
+        <h1>List Students</h1>
+        <a href="/baaks">Home Baaks</a> || <a href="/baaks/add/students">Add Students</a> || <a href="/baaks/students/status/true">Delete Status</a> ||<a href="/baaks/students/status">Student Status</a> || <a href="/baaks/teachers">Teachers</a> ||
+        <a
+            href="/baaks/courses">Courses</a>
+            <hr>
+            <table border="1px">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>NPM</th>
+                    <th>Email</th>
+                    <th>Major</th>
+                    <th>Class</th>
+                    <th>Action</th>
+                </tr>
+                <% data.forEach(el => { %>
+                    <tr>
+                        <td>
+                            <%= el.id %>
+                        </td>
+                        <td>
+                            <%= el.fullName %>
+                        </td>
+                        <td>
+                            <%= el.npm %>
+                        </td>
+                        <td>
+                            <%= el.email %>
+                        </td>
+                        <td>
+                            <%= el.major %>
+                        </td>
+                        <td>
+                            <%= el.class %>
+                        </td>
+                        <td>
+                            <a href="/baaks/<%= el.id %>/edit/students">Edit</a> ||
+                            <a href="/baaks/<%= el.id %>/delete/students" onclick="return confirm('Are you sure you want to delete this Student?');">Delete</a>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </table>
+            <hr>
+    </body>
+    <%- include('../partials/footer') %>

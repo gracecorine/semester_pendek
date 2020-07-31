@@ -1,0 +1,27 @@
+
+<%- include('../partials/header', {title : 'Add Courses'}) %>
+<body>
+    <h1>Add Course</h1>
+    <a href="/">Home</a> || <a href="/baaks">Baak</a> || <a href="/baaks/students">Students</a> || <a href="/baaks/teachers">Teachers</a> || <a href="/baaks/courses">Courses</a>
+    <hr>
+        <form action="/baaks/add/courses" method="POST">
+        <label for="name">Course Name : </label><br>
+        <input type="text" name="name"><br><br>
+        <label for="sks_amount">SKS Amount : </label><br>
+        <input type="number" name="sks_amount"><br><br>
+        <label for="classroom">Class Room : </label><br>
+        <input type="text" name="classroom"><br><br>
+        <label for="course_schedule">Course Schedule : </label><br>
+        <input type="date" name="course_schedule"><br><br>
+        <label for="TeacherId">Teacher : </label><br>
+        <select name="TeacherId" id="TeacherId">
+            <option value="" selected>----- Choosee Teacher ------  </option>
+            <% data.forEach(el => { %>
+                <option value="<%= el.id %>"><%= el.first_name %></option>
+            <% }) %>
+        </select><br><br>
+        <button type="submit">Submit</button>
+        </form>
+    <hr>
+</body>
+<%- include('../partials/footer') %>

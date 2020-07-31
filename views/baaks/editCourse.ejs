@@ -1,0 +1,33 @@
+<%- include('../partials/header', {title : 'Edit Courses'}) %>
+
+    <body>
+        <h1>Edit Course</h1>
+        <a href="/baaks/students">Students</a> || <a href="/baaks/teachers">Teachers</a> || <a href="/baaks/courses">Courses</a>
+        <hr>
+        <form action="/baaks/<%= course.id %>/edit/courses" method="POST">
+            <label for="name">Course Name : </label><br>
+            <input type="text" name="name" value="<%= course.name %>"><br><br>
+            <label for="sks_amount">SKS Amount : </label><br>
+            <input type="number" name="sks_amount" value="<%= course.sks_amount %>"><br><br>
+            <label for="classroom">Class Room : </label><br>
+            <input type="text" name="classroom" value="<%= course.classroom %>"><br><br>
+            <label for="course_schedule">Course Schedule : </label><br>
+            <% let date = String(course.course_schedule.toLocaleDateString())%>
+                <% date=date.split('/')%>
+                    <% let dd = date[0].length>1?date[0]:'0'+date[0]%>
+                        <% let mm = date[1].length>1?date[1]:'0'+date[1]%>
+                            <% let yyyy = date[2]%>
+                                <% let tanggal = `${yyyy}-${dd}-${mm}` %>
+                                    <input type="date" name="course_schedule" value="<%= tanggal %>"><br><br>
+                                    <label for="TeacherId">Teacher : </label><br>
+                                    <select name="TeacherId" id="TeacherId">
+            <option value="" >----- Choosee Teacher ------  </option>
+            <% data.forEach(el => { %>
+                <option value="<%= el.id %>" <%= course.TeacherId === el.id ? 'selected' : '' %>><%= el.first_name %></option>
+            <% }) %>
+        </select><br><br>
+                                    <button type="submit">Edit Save</button>
+        </form>
+        <hr>
+    </body>
+    <%- include('../partials/footer') %>
